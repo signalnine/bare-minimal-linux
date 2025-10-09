@@ -91,8 +91,8 @@ prepare_boot_uefi() {
 
   loader_size=`du -b $LOADER | awk '{print \$1}'`
 
-  # The EFI boot image is 64KB bigger than the kernel size.
-  image_size=$((kernel_size + rootfs_size + loader_size + 65536))
+  # The EFI boot image has 1MB extra space for FAT filesystem overhead.
+  image_size=$((kernel_size + rootfs_size + loader_size + 1048576))
 
   echo "Creating UEFI boot image file '$WORK_DIR/uefi.img'."
   rm -f $WORK_DIR/uefi.img

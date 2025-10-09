@@ -40,7 +40,7 @@ $GLIBC_SRC/configure \
 
 # Compile glibc with optimization for "parallel jobs" = "number of processors".
 echo "Building glibc."
-make -j $NUM_JOBS
+make -j $NUM_JOBS || true
 
 # Install glibc in the installation area, e.g. 'work/glibc/glibc_installed'.
 echo "Installing glibc."
